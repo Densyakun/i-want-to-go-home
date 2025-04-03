@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals';
-import { findFirstKey, getMaxValue } from './enumLib';
+import { createNumericKeysObjectWithOnlyFirstKey, findFirstKey, getMaxValue } from './enumLib';
 
 enum TestEnum {
   A,
@@ -15,4 +15,12 @@ test('get max value of enum', () => {
 
 test('get first key', () => {
   expect(findFirstKey(TestEnum, 0)).toBe("A");
+});
+
+enum TestEnum2 {
+  D = -1
+};
+
+test('', () => {
+  expect(createNumericKeysObjectWithOnlyFirstKey(TestEnum2)[-1]).toBe("D");
 });

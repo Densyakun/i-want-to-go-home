@@ -10,6 +10,15 @@ export function createArrayWithOnlyFirstKey(enumObject: EnumObjectType, valueSiz
   );
 }
 
+export function createNumericKeysObjectWithOnlyFirstKey(enumObject: EnumObjectType) {
+  const object: { [key: number]: number | string } = {};
+  Object.values(enumObject).forEach(value => {
+    if (typeof value === "number")
+      object[value] = findFirstKey(enumObject, value)
+  });
+  return object;
+}
+
 export function getMaxValue(enumObject: EnumObjectType) {
   return Math.max(...Object.keys(enumObject).map(value => parseInt(value) || 0));
 }
